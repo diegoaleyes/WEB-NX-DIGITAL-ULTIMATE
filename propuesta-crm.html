@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Propuesta NXDigital Gestor CRM y Servicios Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a202c; /* Fondo oscuro */
+            color: #e2e8f0; /* Texto claro */
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 110px; /* Ajusta el tamaño del logo */
+            margin: 0 auto; /* Centrar el logo */
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4299e1; /* Azul de Tailwind */
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: #63b3ed; /* Azul más claro */
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #cbd5e0;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: #2d3748; /* Fondo más oscuro para las cards */
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-header h3 {
+            margin-bottom: 5px;
+            color: #90cdf4; /* Un azul más suave */
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #66ff66; /* Verde vibrante para el precio */
+            margin-bottom: 10px;
+        }
+
+        .price small {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #a0aec0;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            flex-grow: 1; /* Para que la lista ocupe el espacio disponible */
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: '✔️'; /* Checkmark */
+            position: absolute;
+            left: 0;
+            color: #66ff66; /* Verde para el check */
+        }
+
+        /* Estilo de botón inspirado en Firebase */
+        .btn-firebase {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 9999px; /* Bordes muy redondeados */
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 2px solid transparent; /* Borde transparente por defecto */
+            background-color: #4299e1; /* Fondo azul estándar */
+            color: #ffffff;
+            cursor: pointer;
+            outline: none; /* Remover outline al hacer click */
+        }
+
+        .btn-firebase::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 9999px;
+            /* Degradado de colores para el efecto "arcoíris" */
+            background: linear-gradient(45deg, #FF6B6B, #FFD93D, #6BFFB3, #6BCBFF, #BE6BFF);
+            background-size: 300% 300%;
+            z-index: -1;
+            filter: blur(8px); /* Efecto de brillo/iluminación */
+            opacity: 0;
+            transition: opacity 0.3s ease, background-position 0.3s ease;
+        }
+
+        .btn-firebase:hover::before {
+            opacity: 1;
+            background-position: 100% 0%; /* Anima el degradado */
+        }
+
+        .btn-firebase:hover {
+            border-color: transparent; /* El borde "iluminado" toma el control */
+            color: #ffffff; /* Texto blanco al hacer hover */
+            transform: translateY(-2px); /* Pequeño efecto 3D */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn-firebase:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* Clases específicas para botones con borde de color */
+        .btn-colored-border {
+            background-color: #2d3748; /* Fondo más oscuro para el botón dentro de la card */
+            color: #e2e8f0; /* Texto claro */
+            border: 2px solid #63b3ed; /* Borde azul suave por defecto */
+            position: relative;
+            z-index: 1;
+        }
+        .btn-colored-border::before {
+             /* Degradado de colores para el efecto "arcoíris" */
+            background: linear-gradient(45deg, #FF6B6B, #FFD93D, #6BFFB3, #6BCBFF, #BE6BFF);
+            background-size: 300% 300%;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease, background-position 0.3s ease;
+        }
+
+        .btn-colored-border:hover::before {
+            opacity: 1;
+            background-position: 100% 0%;
+        }
+
+        .btn-colored-border:hover {
+            border-color: transparent; /* El borde "iluminado" toma el control */
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4299e1;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #4a5568;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: #63b3ed;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: #90cdf4;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <img src="./logo verde 3d.webp" alt="Logo NXDigital Gestor">
+            </div>
+            <h1>¡Bienvenido a la Gestión Digital de tu Negocio con NXDigital!</h1>
+            <p class="text-xl text-gray-400">Transforma la manera en que gestionas tus clientes y poténciate en el mundo digital.</p>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="section-title">NXDigital CRM: Tu Aliado en la Gestión de Clientes</h2>
+            <p class="text-lg text-center text-gray-300 mb-8">Un CRM intuitivo y potente, diseñado específicamente para PYMES, que te ayuda a organizar clientes, automatizar procesos, mejorar el seguimiento comercial y potenciar tus ventas, todo a un precio accesible.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-blue-300">Plan CRM Esencial</h3>
+                        <p class="text-gray-400">Ideal para empezar a organizar tu base de clientes.</p>
+                        <div class="price">X€<small>/mes</small></div>
+                    </div>
+                    <ul class="features-list">
+                        <li>Gestión completa de clientes y contactos.</li>
+                        <li>Registro de notas adicionales por cliente.</li>
+                        <li>Información centralizada: Nombre, Email, Teléfono, Empresa.</li>
+                        <li>Edición y eliminación de clientes sencilla.</li>
+                        <li>Interfaz intuitiva y responsive.</li>
+                        <li>Hasta X usuarios.</li>
+                        <li>Soporte técnico estándar.</li>
+                    </ul>
+                    <a href="https://www.nxdigital.es/contacto" target="_blank" class="btn-firebase btn-colored-border mt-auto">Solicitar Demo</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-blue-300">Plan CRM Pro</h3>
+                        <p class="text-gray-400">Maximiza tu productividad y control comercial.</p>
+                        <div class="price">Y€<small>/mes</small></div>
+                    </div>
+                    <ul class="features-list">
+                        <li>Todas las características del Plan Esencial.</li>
+                        <li>**Búsqueda y filtrado avanzado de clientes**.</li>
+                        <li>Reportes y analíticas básicas de actividad.</li>
+                        <li>Historial de interacciones con clientes.</li>
+                        <li>Integración básica con tu correo electrónico.</li>
+                        <li>Hasta Y usuarios.</li>
+                        <li>Soporte técnico prioritario.</li>
+                    </ul>
+                    <a href="https://www.nxdigital.es/contacto" target="_blank" class="btn-firebase btn-colored-border mt-auto">Solicitar Demo Pro</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-blue-300">Plan CRM Premium</h3>
+                        <p class="text-gray-400">La solución completa para empresas en crecimiento.</p>
+                        <div class="price">Z€<small>/mes</small></div>
+                    </div>
+                    <ul class="features-list">
+                        <li>Todas las características del Plan Pro.</li>
+                        <li>**Gestión de oportunidades y embudo de ventas**.</li>
+                        <li>Funcionalidades de geolocalización (si las implementas).</li>
+                        <li>Flujos de trabajo automatizados.</li>
+                        <li>Integraciones con herramientas de marketing y ventas.</li>
+                        <li>Usuarios ilimitados.</li>
+                        <li>Soporte técnico 24/7 y consultoría.</li>
+                    </ul>
+                    <a href="https://www.nxdigital.es/contacto" target="_blank" class="btn-firebase btn-colored-border mt-auto">Contactar para Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">Otros Servicios Web de NXDigital</h2>
+            <p class="text-lg text-center text-gray-300 mb-8">En NXDigital, somos tu aliado digital integral. Además de potenciar tu gestión de clientes, ofrecemos una gama completa de servicios web para llevar tu negocio al siguiente nivel.</p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-green-300">Diseño y Desarrollo Web</h3>
+                    </div>
+                    <ul class="features-list">
+                        <li>Creación de sitios web a medida para PYMES.</li>
+                        <li>Diseño responsive para todos los dispositivos.</li>
+                        <li>Tiendas online (e-commerce) funcionales y seguras.</li>
+                        <li>Mantenimiento y actualizaciones web.</li>
+                    </ul>
+                    <a href="https://www.nxdigital.es/servicios-web" target="_blank" class="btn-firebase btn-colored-border mt-auto">Ver Servicios Web</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-purple-300">Marketing Digital</h3>
+                    </div>
+                    <ul class="features-list">
+                        <li>Estrategias SEO para mejor posicionamiento.</li>
+                        <li>Campañas de Publicidad Online (SEM).</li>
+                        <li>Gestión de Redes Sociales.</li>
+                        <li>Creación de contenido y Email Marketing.</li>
+                    </ul>
+                    <a href="https://www.nxdigital.es/marketing-digital" target="_blank" class="btn-firebase btn-colored-border mt-auto">Saber Más</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-info">
+            <h2 class="section-title">¡Hablemos de tu Proyecto!</h2>
+            <p class="text-gray-300">Estamos listos para ayudarte a digitalizar y potenciar tu negocio.</p>
+            <p class="text-gray-300">Contáctanos hoy mismo para una consulta gratuita:</p>
+            <p class="text-2xl font-bold mt-4">Email: <a href="mailto:diego@nxdigital.es">diego@nxdigital.es</a></p>
+            <p class="text-2xl font-bold">Web: <a href="https://www.nxdigital.es" target="_blank">www.nxdigital.es</a></p>
+            </section>
+    </div>
+</body>
+</html>

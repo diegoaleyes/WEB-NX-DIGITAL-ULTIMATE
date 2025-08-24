@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agencia Web - Planes</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth; /* Scroll suave */
+    }
+
+    /* Botones multicolor transparentes */
+    .btn-gradient {
+      background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease-in-out;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .btn-gradient:hover {
+      -webkit-text-fill-color: white;
+      background-clip: border-box;
+      background-image: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+      box-shadow: 0 0 15px rgba(255, 110, 196, 0.6),
+                  0 0 25px rgba(66, 230, 149, 0.4);
+    }
+
+    /* Animación cards */
+    .card-hover {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-10px) scale(1.06);
+      box-shadow: 0 0 25px rgba(255, 110, 196, 0.5),
+                  0 0 40px rgba(66, 230, 149, 0.4),
+                  0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Plan destacado */
+    .featured {
+      border: 4px solid transparent;
+      border-radius: 1rem;
+      /* background: linear-gradient(rgb(18, 43, 23), rgb(150, 156, 150)) padding-box, */
+      background: linear-gradient(160deg, rgb(18, 43, 23) 0%, rgb(34, 197, 94) 100%) padding-box;
+color: #f1f5f9; /* texto casi blanco */
+
+
+                  linear-gradient(90deg, #ff6ec4, #7873f5, #42e695) border-box;
+      animation: gradientBorder 4s linear infinite;
+      transform: scale(1.05);
+      position: relative;
+    }
+
+    .featured:hover {
+      transform: translateY(-12px) scale(1.08);
+      box-shadow: 0 0 35px rgba(120, 115, 245, 0.6),
+                  0 0 50px rgba(66, 230, 149, 0.5),
+                  0 15px 25px rgba(0,0,0,0.2);
+    }
+
+    @keyframes gradientBorder {
+      0% { background: linear-gradient(white, white) padding-box,
+                   linear-gradient(90deg, #ff6ec4, #7873f5, #42e695) border-box; }
+      100% { background: linear-gradient(white, white) padding-box,
+                     linear-gradient(450deg, #ff6ec4, #7873f5, #42e695) border-box; }
+    }
+
+    /* Animación precios */
+    .price {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .card-hover:hover .price,
+    .featured:hover .price {
+      transform: scale(1.15);
+      color: #ff6ec4;
+    }
+
+    /* Badge "Más popular" */
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: linear-gradient(90deg, #ff6ec4, #7873f5, #42e695);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+
+    /* Animación fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+        width: 150px;
+        margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+  <!-- Header -->
+  <header class="text-center py-12">
+    <div class="logo">
+      <a href="index.html">
+        <img src="./logo verde 3d.webp" alt="logo Nexo Digital">
+      </a>
+    </div>
+    <h1 class="text-4xl font-bold mb-4">Agencia Web para PyMEs</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-300">Crea tu web funcional, moderna y lista para crecer.</p>
+  </header>
+
+  <!-- Sección de planes -->
+  <section class="max-w-6xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-3">
+
+    <!-- Plan Básico -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center card-hover fade-in">
+      <h2 class="text-2xl font-semibold mb-2">Básico</h2>
+      <p class="text-gray-500 dark:text-gray-400 mb-4">Perfecto para empezar online</p>
+      <p class="text-3xl font-bold mb-6 price">300€</p>
+      <ul class="mb-6 space-y-2 text-gray-600 dark:text-gray-300">
+        <li>✅ Página principal + contacto</li>
+        <li>✅ Hosting y dominio 1 año</li>
+        <li>✅ Actualizaciones básicas</li>
+      </ul>
+      <a href="index.html#contacto" class="btn-gradient font-semibold inline-block text-center">Contratar</a>
+    </div>
+
+    <!-- Plan Profesional (destacado) -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center card-hover featured fade-in">
+      <span class="badge">Más popular ⭐</span>
+      <h2 class="text-2xl font-semibold mb-2">Profesional</h2>
+      <p class="text-gray-500 dark:text-gray-400 mb-4">Para negocios que quieren destacar</p>
+      <p class="text-3xl font-bold mb-6 price">500€</p>
+      <ul class="mb-6 space-y-2 text-gray-600 dark:text-gray-300">
+        <li>✅ Hasta 5 páginas</li>
+        <li>✅ Formularios de contacto y reservas</li>
+        <li>✅ SEO básico</li>
+        <li>✅ Mantenimiento mensual</li>
+      </ul>
+      <a href="index.html#contacto" class="btn-gradient font-semibold inline-block text-center">Contratar</a>
+    </div>
+
+    <!-- Plan Premium -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center card-hover fade-in">
+      <h2 class="text-2xl font-semibold mb-2">Premium</h2>
+      <p class="text-gray-500 dark:text-gray-400 mb-4">Todo lo que tu negocio necesita online</p>
+      <p class="text-3xl font-bold mb-6 price">800€</p>
+      <ul class="mb-6 space-y-2 text-gray-600 dark:text-gray-300">
+        <li>✅ Sitio completo hasta 10 páginas</li>
+        <li>✅ E-commerce o catálogo online</li>
+        <li>✅ Integración de pagos</li>
+        <li>✅ Soporte y mantenimiento avanzado</li>
+      </ul>
+      <a href="index.html#contacto" class="btn-gradient font-semibold inline-block text-center">Contratar</a>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-gray-500 dark:text-gray-400">
+    &copy; 2025 Nexo Digital. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
